@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import {useNavigate} from"react-router-dom"
 
 export const Register = () => {
   const [user, setUser] = useState({
@@ -10,7 +10,7 @@ export const Register = () => {
   });
 
 
-
+const navigate =useNavigate();
   const handleInput = (e) => {
     console.log(e);
     let name = e.target.name;
@@ -41,9 +41,10 @@ export const Register = () => {
       console.log(responseData.extraDetails);
 
       if (response.ok) {
-        alert("registration successful");
+        alert("Registration Successful");
     
         setUser({ username: "", email: "", phone: "", password: "" });
+        navigate("/login")
       } else {
         alert(
           responseData.extraDetails
