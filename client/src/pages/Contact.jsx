@@ -88,8 +88,7 @@ export const Contact = () => {
         </div>
 
         <section className="mb-3">
-          <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1726.9273781739478!2d85.33188948906054!3d27.67564490927884!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19806e63fd13%3A0x9ea5930c087495b!2sHimalayan%20SIP!5e0!3m2!1sen!2snp!4v1731941872860!5m2!1sen!2snp"
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3533.39065745603!2d85.3353484!3d27.674318300000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19806e63fd13%3A0x9ea5930c087495b!2sHimalayan%20SIP!5e0!3m2!1sen!2snp!4v1732171111748!5m2!1sen!2snp"
             width="100%"
             height="450"
             allowFullScreen
