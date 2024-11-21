@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {useNavigate} from"react-router-dom"
-
+import { useAuth } from "../store/auth";
 export const Register = () => {
   const [user, setUser] = useState({
     username: "",
@@ -11,6 +11,9 @@ export const Register = () => {
 
 
 const navigate =useNavigate();
+
+const {storetokenInLS} = useAuth();
+
   const handleInput = (e) => {
     console.log(e);
     let name = e.target.name;
@@ -42,7 +45,12 @@ const navigate =useNavigate();
 
       if (response.ok) {
         alert("Registration Successful");
-    
+       
+        console.log('response from server',responseData);
+        storetokenInLS(responseData.token);//store token in local host
+        //The above function can be defined in any of the pages folder as we have already defined it in main.jsx as authprovider
+
+       //COntext API - send data from parent to diff diff child
         setUser({ username: "", email: "", phone: "", password: "" });
         navigate("/login")
       } else {

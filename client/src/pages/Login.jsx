@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../store/auth";
 
-// import { toast } from "react-toastify";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -11,7 +11,7 @@ export const Login = () => {
 
 
   const navigate = useNavigate(); // Initialize useNavigate
-
+  const {storetokenInLS} = useAuth();
   // const navigate = useNavigate();
 
   // let handle the input field value
@@ -45,8 +45,14 @@ export const Login = () => {
 
       if (response.ok) {
         alert("Login Successful");
-     
+       
+        console.log('response from server',responseData);
+        storetokenInLS(responseData.token);//store token in local host
+        //The above function can be defined in any of the pages folder as we have already defined it in main.jsx as authprovider
+
+        
         setUser({ email: "", password: "" });
+        console.log("Navigating to home page");
         navigate("/"); // Navigate to the home page
       } else {
         alert(
@@ -81,7 +87,7 @@ export const Login = () => {
                 <br />
                 <form onSubmit={handleSubmit}>
                   <div>
-                    <label htmlFor="email">email</label>
+                    <label htmlFor="email">Email</label>
                     <input
                       type="text"
                       name="email"
@@ -92,7 +98,7 @@ export const Login = () => {
                   </div>
 
                   <div>
-                    <label htmlFor="password">password</label>
+                    <label htmlFor="password">Password</label>
                     <input
                       type="password"
                       name="password"
