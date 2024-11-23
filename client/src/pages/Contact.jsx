@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useAuth } from "../store/auth";
 export const Contact = () => {
   const [contact, setContact] = useState({
     username: "",
@@ -7,6 +7,18 @@ export const Contact = () => {
     message: "",
   });
 
+  // get user data from auth store
+  const [userData,setUserData] = useState(true)
+  const{user }  = useAuth();
+  //this code is used to get data at contact page by default for complaints and all
+  if(userData && user){
+    setContact({
+      username: user.username,
+      email: user.email,
+      message: user.message,
+  });
+  setUserData(false);
+  }
   // lets tackle our handleInput
   const handleInput = (e) => {
     const { name, value } = e.target;
