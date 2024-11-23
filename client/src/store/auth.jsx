@@ -24,13 +24,14 @@ export const AuthProvider = ({ children }) => {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
+          
         },
       })
       if(response.ok){
         const data =await response.json()
         console.log("USer data",data.userData)
-        setUser(data);
+        setUser(data.userData);
+
       }
     } catch (error) {
       console.error(error);
@@ -40,8 +41,10 @@ export const AuthProvider = ({ children }) => {
   }
   //jwt authentication -to get currently logged in user adat
   useEffect(() => {
-    userAuthentication()
-  },[]);
+    if(token){
+    userAuthentication();
+    }
+  },[token]);
   
 
   return (
