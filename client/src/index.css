@@ -241,7 +241,7 @@ a.active{
     & input:focus,
     & textarea:focus {
       border-color: var(--btn-color); /* Button color for focus */
-      background: var(--bg-color); /* Keep background consistent */
+      /* background: var(--bg-color); Keep background consistent */
     }
 
     & textarea {

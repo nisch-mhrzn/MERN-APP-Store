@@ -10,10 +10,6 @@ import { Navbar } from "./components/Navbar";
 import { Logout } from "./pages/Logout";
 
 
-
-
-//subscribe Suprantechnical channel for more awesome content.
-
 const App = () => {
   return (
     <Router>
