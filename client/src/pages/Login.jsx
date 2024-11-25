@@ -5,7 +5,7 @@ import { useAuth } from "../store/auth";
 
 export const Login = () => {
   const [user, setUser] = useState({
-    username: "",
+    email: "",
     password: "",
   });
 
@@ -89,7 +89,7 @@ export const Login = () => {
                   <div>
                     <label htmlFor="email">Email</label>
                     <input
-                      type="text"
+                      type="email"
                       name="email"
                       value={user.email}
                       onChange={handleInput}

@@ -3,61 +3,72 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
-    const[token,setToken] = useState(localStorage.getItem("token")||"");
-    const [user,setUser] = useState("")
+  const [token, setToken] = useState(localStorage.getItem("token") || "");
+  const [user, setUser] = useState("");
+  const [services, setServices] = useState([]);
   const storetokenInLS = (serverToken) => {
     localStorage.setItem("Token", serverToken);
     setToken(serverToken); // Update state
   };
-    //logout functionality
-  let isLoggedIn =!!token;//if token then true if doesnt have token then false
-  console.log("ISLOGGED IN",isLoggedIn)
+  //logout functionality
+  let isLoggedIn = !!token; //if token then true if doesnt have token then false
+  console.log("ISLOGGED IN", isLoggedIn);
 
-
-  const LogoutUser =() => {
-   localStorage.removeItem("token");
+  const LogoutUser = () => {
+    localStorage.removeItem("token");
     setToken("");
+    setUser(null);
   };
-  const userAuthentication =async() => {
+  const userAuthentication = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/auth/user",{
+      const response = await fetch("http://localhost:5000/api/auth/user", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
-          
         },
-      })
-      if(response.ok){
-        const data =await response.json()
-        console.log("USer data",data.userData)
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log("USer data", data.userData);
         setUser(data.userData);
-
       }
     } catch (error) {
       console.error(error);
-      
     }
-  
-  }
+  };
+  const getServices = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/api/data/service", {
+        method: "GET",
+      });
+      if (response.ok) {
+        const services = await response.json();
+        setServices(services.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   //jwt authentication -to get currently logged in user adat
   useEffect(() => {
-    if(token){
     userAuthentication();
-    }
-  },[token]);
-  
+
+    getServices();
+  }, [token]);
 
   return (
-    <AuthContext.Provider value={{isLoggedIn,storetokenInLS,LogoutUser,user}}>
+    <AuthContext.Provider
+      value={{ isLoggedIn, storetokenInLS, LogoutUser, user, services }}
+    >
       {/* //any page can access storetokenInLS*/}
       {children}
     </AuthContext.Provider>
   );
 };
 export const useAuth = () => {
-  const authContextValue =  useContext(AuthContext) 
-  if(!authContextValue){
-      throw new Error('useAuth must be used within an AuthProvider')
+  const authContextValue = useContext(AuthContext);
+  if (!authContextValue) {
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return authContextValue;
-}
+};
