@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../store/auth";
-
+import { toast } from "react-toastify";
 
 export const Login = () => {
   const [user, setUser] = useState({
@@ -9,9 +9,8 @@ export const Login = () => {
     password: "",
   });
 
-
   const navigate = useNavigate(); // Initialize useNavigate
-  const {storetokenInLS} = useAuth();
+  const { storetokenInLS } = useAuth();
   // const navigate = useNavigate();
 
   // let handle the input field value
@@ -44,18 +43,16 @@ export const Login = () => {
       console.log(responseData.extraDetails);
 
       if (response.ok) {
-        alert("Login Successful");
-       
-        console.log('response from server',responseData);
-        storetokenInLS(responseData.token);//store token in local host
+        console.log("response from server", responseData);
+        storetokenInLS(responseData.token); //store token in local host
         //The above function can be defined in any of the pages folder as we have already defined it in main.jsx as authprovider
 
-        
         setUser({ email: "", password: "" });
+        toast.success("Login Successful");
         console.log("Navigating to home page");
         navigate("/"); // Navigate to the home page
       } else {
-        alert(
+        toast.error(
           responseData.extraDetails
             ? responseData.extraDetails
             : responseData.message

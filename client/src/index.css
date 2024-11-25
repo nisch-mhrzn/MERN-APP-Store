@@ -50,6 +50,12 @@ li{
   list-style: none;
 }
 
+.toastBody{
+  font-family: "Atlas Grotesk Web",Arial, Helvetica, sans-serif;
+
+  font-size: 0.1.7rem;
+}
+
 .container {
   max-width: 140rem;
   margin: 0 auto;
