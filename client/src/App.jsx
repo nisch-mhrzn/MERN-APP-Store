@@ -8,7 +8,7 @@ import { Login } from "./pages/Login";
 
 import { Navbar } from "./components/Navbar";
 import { Logout } from "./pages/Logout";
-
+import { Service } from "./pages/Service";
 
 const App = () => {
   return (
@@ -18,12 +18,11 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        {/* <Route path="/service" element={<Service />} /> */}
+        <Route path="/service" element={<Service />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-       
-        
+        <Route path="/test" element={<h1>Test Page</h1>} />
       </Routes>
     </Router>
   );

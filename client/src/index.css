@@ -502,6 +502,7 @@ a.active{
 .section-services {
  
   padding: 3.2rem;
+  
 
   & .container:first-child {
     padding: 0;
@@ -513,6 +514,7 @@ a.active{
   }
 
   & .card {
+    /* background-color: var(--btn-color); */
     display: flex;
     flex-direction: column;
     gap: 3.2rem;
@@ -597,3 +599,4 @@ a.active{
     }
   }
 }
+

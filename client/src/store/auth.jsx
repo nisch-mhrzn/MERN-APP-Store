@@ -3,12 +3,12 @@ import { createContext, useContext, useEffect, useState } from "react";
 export const AuthContext = createContext();
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(localStorage.getItem("token") || "");
-  const [user, setUser] = useState("");
+  const [token, setToken] = useState(() => localStorage.getItem("token") || "");
+  const [user, setUser] = useState(null);
   const [services, setServices] = useState([]);
   const storetokenInLS = (serverToken) => {
-    localStorage.setItem("Token", serverToken);
     setToken(serverToken); // Update state
+    localStorage.setItem("token", serverToken);
   };
   //logout functionality
   let isLoggedIn = !!token; //if token then true if doesnt have token then false
@@ -29,11 +29,11 @@ export const AuthProvider = ({ children }) => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log("USer data", data.userData);
+        console.log("User data", data.userData);
         setUser(data.userData);
       }
     } catch (error) {
-      console.error(error);
+      console.error("User authentication error", error);
     }
   };
   const getServices = async () => {
@@ -43,6 +43,7 @@ export const AuthProvider = ({ children }) => {
       });
       if (response.ok) {
         const services = await response.json();
+        console.log("Services:", services); // Check if this outputs the expected data
         setServices(services.data);
       }
     } catch (error) {
@@ -52,9 +53,8 @@ export const AuthProvider = ({ children }) => {
   //jwt authentication -to get currently logged in user adat
   useEffect(() => {
     userAuthentication();
-
     getServices();
-  }, [token]);
+  }, []);
 
   return (
     <AuthContext.Provider
