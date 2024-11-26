@@ -53,7 +53,7 @@ const {storetokenInLS} = useAuth();
         //COntext API - send data from parent to diff diff child
         setUser({ username: "", email: "", phone: "", password: "" });
         toast.success("Registration Successful");
-        navigate("/login")
+        navigate("/")
       } else {
         toast.error(
           responseData.extraDetails
