@@ -6,7 +6,7 @@ const authMiddleware = async (req, res, next) => {
   //in middleware we need to pass extra agrument as next
   const token = req.header("Authorization");
   if (!token) {
-    return res.status(401).json({ msg: "No token, authorization denied" });
+    return res.status(401).json({ message: "No token, authorization denied" });
   }
 
   //removing bearer prefix
