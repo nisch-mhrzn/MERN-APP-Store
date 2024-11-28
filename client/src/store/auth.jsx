@@ -10,6 +10,7 @@ export const AuthProvider = ({ children }) => {
     setToken(serverToken); // Update state so you do not need to login to refresh the page
     localStorage.setItem("token", serverToken);
   };
+  const authorizationToken =`Bearer ${token}`;
   //logout functionality
   let isLoggedIn = !!token; //if token then true if doesnt have token then false
   console.log("ISLOGGED IN", isLoggedIn);
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
       const response = await fetch("http://localhost:5000/api/auth/user", {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: authorizationToken,
         },
       });
       if (response.ok) {
@@ -58,7 +59,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, storetokenInLS, LogoutUser, user, services }}
+      value={{ isLoggedIn, storetokenInLS, LogoutUser, user, services,authorizationToken }}
     >
       {/* //any page can access storetokenInLS*/}
       {children}

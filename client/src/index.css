@@ -606,3 +606,36 @@ a.active{
   }
 }
 
+body tr{
+  display: grid;
+  grid-template-columns: repeat(5, minmax(10rem,1fr));
+  align-items: center;
+  box-shadow: 0 0 0.3rem 0 grey;
+  margin-bottom: 10px;
+  border-bottom: 4px solid transparent;
+  color: var(--bg-color);
+  
+}
+body tr:last-child{
+  box-shadow: none;
+}
+td{
+  font-size: 1.7rem;
+  letter-spacing: 0.1rem;
+  padding: 3rem;
+  text-align: center;
+  color: var(--helper-color);
+  width: 30rem;
+}
+
+table{
+  background: #FFFDD0;
+  border-collapse: collapse;
+  box-shadow: rgba(255, 255, 255, 0.2);
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  -ms-border-radius: 1rem;
+  -o-border-radius: 1rem;
+  border-radius: 1rem;
+
+}
