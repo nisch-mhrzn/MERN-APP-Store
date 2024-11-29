@@ -42,7 +42,7 @@ return <>
         <tbody>
         {users.map((curUser,index)=>{
             return <tr key={index}>
-                <td>{curUser.name}</td>
+                <td>{curUser.username}</td>
                 <td>{curUser.email}</td>
                 <td>{curUser.phone}</td>
                 <td><button>Update</button></td>

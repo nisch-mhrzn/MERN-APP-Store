@@ -606,7 +606,7 @@ a.active{
   }
 }
 
-body tr{
+/* body tr{
   display: grid;
   grid-template-columns: repeat(5, minmax(10rem,1fr));
   align-items: center;
@@ -631,11 +631,103 @@ td{
 table{
   background: #FFFDD0;
   border-collapse: collapse;
-  box-shadow: rgba(255, 255, 255, 0.2);
+  box-shadow: rgba(255, 255, 25, 0.922);
   -webkit-border-radius: 1rem;
   -moz-border-radius: 1rem;
   -ms-border-radius: 1rem;
   -o-border-radius: 1rem;
   border-radius: 1rem;
 
+}
+.updateLink{
+  background:#cff6dd;
+  color: #1fa750;
+  padding: 1rem 4rem;
+  -webkit-border-radius:3 rem;
+  -moz-border-radius: 3rem;
+  -ms-border-radius: 3rem;
+  -o-border-radius: 3rem;
+  border-radius: 3rem;
+  &:hover{
+    color:#cff6dd;
+    background:#1fa750;;
+    font-weight: bold;
+  }
+}
+
+.admin-section-form{
+  background-color: var(--bg-color);
+  max-width: 60rem;
+  padding: 0 10rem;
+  color: var(--dark-color);
+  margin-left: 10rem;
+  &form{
+    display: flex;
+    flex-direction: column;
+    gap :2rem;
+    padding: 5rem;
+    &div{
+      display: grid;
+      &input{
+        background-color: var(--helper-color);
+        border: none;
+        padding: 1.4rem 0rem 1.4rem 2rem;
+        color: var(--dark-color);
+      }
+      &input,button{
+        max-width: 30rem;
+      }
+    }
+
+  }
+} */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+  color: #333;
+  text-transform: uppercase;
+}
+
+.update-btn {
+  background-color: #cff6dd;
+  color: #1fa750;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background-color: #fdd0d0;
+  color: #a75050;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.update-btn:hover {
+  background-color: #1fa750;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #a75050;
+  color: white;
+}
+
+.error-message {
+  color: red;
+  margin: 1rem 0;
 }
