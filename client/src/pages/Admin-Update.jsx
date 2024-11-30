@@ -19,7 +19,7 @@ export const AdminUpdate = () => {
   //get single user data
   const getSingleUserData = async () => {
     try {
-      console.log("Authorization Token in AdminUsers:", authorizationToken);
+
       const response = await fetch(
         `http://localhost:5000/api/admin/users/${params.id}`,
         {
