@@ -27,12 +27,21 @@ const getAllContacts = async (req, res, next) => {
 //USser delete logic
 const deleteUserById = async (req, res) => {
   try {
-    const id = req.params.id; //gets the id of the user
+    const { id } = req.params; //gets the id of the user
     await User.deleteOne({ _id: id }); //id the id from db matches the url id then delete
     return res.status(200).json({ message: "User deleted successfully" });
   } catch (error) {
     next(error);
   }
 };
+const getUserById = async (req, res,next) => {
+  try {
+    const { id } = req.params; //gets the id of the user
+    const data =await User.findOne({ _id: id },{password:0}); //id the id from db matches the url id then update without password
+    return res.status(200).json(data);
+  } catch (error) {
+    next(error);
+  }
+};
 
-module.exports = { getAllUsers, getAllContacts, deleteUserById };
+module.exports = { getAllUsers, getAllContacts, deleteUserById ,getUserById};
