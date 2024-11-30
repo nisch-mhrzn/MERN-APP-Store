@@ -24,4 +24,15 @@ const getAllContacts = async (req, res, next) => {
     next(error);
   }
 };
-module.exports = { getAllUsers, getAllContacts };
+//USser delete logic
+const deleteUserById = async (req, res) => {
+  try {
+    const id = req.params.id; //gets the id of the user
+    await User.deleteOne({ _id: id }); //id the id from db matches the url id then delete
+    return res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { getAllUsers, getAllContacts, deleteUserById };
