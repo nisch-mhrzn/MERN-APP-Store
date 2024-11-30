@@ -15,6 +15,9 @@ router
   .route("/contacts")
   .get(authMiddleware, adminMiddleware, adminController.getAllContacts);
 router
+  .route("/users/update/:id")
+  .patch(authMiddleware, adminMiddleware, adminController.updateUserById);
+router
   .route("/users/delete/:id")
   .delete(authMiddleware, adminMiddleware, adminController.deleteUserById);
 

@@ -43,5 +43,17 @@ const getUserById = async (req, res,next) => {
     next(error);
   }
 };
+const updateUserById = async (req, res,next) => {
+  try {
+    const { id } = req.params; //gets the id of the user
+    const updatedUserData =req.body; //
+    const updatedData = await User.updateOne({_id:id},{
+      $set: updatedUserData,
+    })
+    return res.status(200).json(updatedData);
+  } catch (error) {
+    next(error);
+  }
+};
 
-module.exports = { getAllUsers, getAllContacts, deleteUserById ,getUserById};
+module.exports = { getAllUsers, getAllContacts, deleteUserById ,getUserById,updateUserById};
