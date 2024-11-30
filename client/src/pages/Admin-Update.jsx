@@ -12,6 +12,8 @@ export const AdminUpdate = () => {
   });
 
   const params = useParams();
+  console.log("Captured params:", params);
+
   const { authorizationToken } = useAuth();
 
   //get single user data
@@ -59,7 +61,7 @@ export const AdminUpdate = () => {
         {
           method: "PATCH",
           headers: {
-            "Content-Type": "application/json",//beacuse in POST we are using this 
+            "Content-Type": "application/json", //beacuse in POST we are using this
             Authorization: authorizationToken,
           },
           body: JSON.stringify(data),

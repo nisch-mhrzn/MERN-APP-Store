@@ -46,7 +46,9 @@ const getUserById = async (req, res,next) => {
 const updateUserById = async (req, res,next) => {
   try {
     const { id } = req.params; //gets the id of the user
-    const updatedUserData =req.body; //
+    const updatedUserData =req.body; 
+    console.log("Received ID:", id); // Log received ID
+    console.log("Data to Update:", updatedUserData); // Log data to update
     const updatedData = await User.updateOne({_id:id},{
       $set: updatedUserData,
     })
