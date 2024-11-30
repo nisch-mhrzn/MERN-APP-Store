@@ -1,3 +1,3 @@
 export const AdminContacts = () => {
-    return <h1>Admin Conatcts Panel</h1>
+    return <h1>Admin Contacts Panel</h1>
     }
