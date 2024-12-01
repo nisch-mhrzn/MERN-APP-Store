@@ -6,6 +6,7 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(() => localStorage.getItem("token") || "");
   const [user, setUser] = useState(null);
   const [services, setServices] = useState([]);
+  const [isLoading,setIsLoading]= useState(true);
   const storetokenInLS = (serverToken) => {
     setToken(serverToken); // Update state so you do not need to login to refresh the page
     localStorage.setItem("token", serverToken);
@@ -22,6 +23,7 @@ export const AuthProvider = ({ children }) => {
   };
   const userAuthentication = async () => {
     try {
+      setIsLoading(true);
       const response = await fetch("http://localhost:5000/api/auth/user", {
         method: "GET",
         headers: {
@@ -32,6 +34,12 @@ export const AuthProvider = ({ children }) => {
         const data = await response.json();
         console.log("User data", data.userData);
         setUser(data.userData);
+        setIsLoading(false);//UNTIL DATA IS NOT FETCHED STAY IN LOADING STATE 
+      }
+      else{
+        console.log("Error Fetching user data");
+        setIsLoading(false);
+
       }
     } catch (error) {
       console.error("User authentication error", error);
@@ -59,7 +67,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, storetokenInLS, LogoutUser, user, services,authorizationToken }}
+      value={{ isLoggedIn, storetokenInLS, LogoutUser, user, services,authorizationToken ,isLoading}}
     >
       {/* //any page can access storetokenInLS*/}
       {children}
