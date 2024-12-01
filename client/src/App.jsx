@@ -13,6 +13,7 @@ import { AdminLayout } from "./components/layouts/Admin-Layout";
 import { AdminUsers } from "./pages/Admin-Users";
 import { AdminContacts } from "./pages/Admin-Contacts";
 import { AdminUpdate } from "./pages/Admin-Update";
+import { Error } from "./pages/Error";
 const App = () => {
   return (
     <Router>
@@ -25,7 +26,7 @@ const App = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
-        <Route path="/test" element={<h1>Test Page</h1>} />
+        <Route path="*" element={<Error/>} />
         <Route path="/admin" element={<AdminLayout/>}>
         <Route path="users" element={<AdminUsers/>}/>
         <Route path="contacts" element={<AdminContacts/>}/>
