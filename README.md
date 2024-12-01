@@ -1,7 +1,3 @@
-Thanks for sharing the folder structure. Based on the folder structure and the previous code snippets you've provided, here's a comprehensive **README.md** file for your project:
-
----
-
 # MERN Project - Admin Dashboard with Authentication and API Integration
 
 ## Project Overview
@@ -140,7 +136,3 @@ server/
 - Add testing with **Jest** for both frontend and backend.
 - Enhance UI with a design framework like **Material-UI** or **Bootstrap**.
 - Implement pagination for user and contact lists.
-
----
-
-Feel free to customize this README further based on specific project details!
