@@ -12,7 +12,7 @@ export const Contact = () => {
 
   // get user data from auth store
   const [userData,setUserData] = useState(true)
-  const{user }  = useAuth();
+  const{user ,API}  = useAuth();
   //this code is used to get data at contact page by default for complaints and all
   useEffect(() => {
     if (userData && user) {
@@ -39,7 +39,7 @@ export const Contact = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:5000/api/form/contact",{
+      const response = await fetch(`${API}/api/form/contact`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

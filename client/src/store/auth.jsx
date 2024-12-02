@@ -7,6 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [services, setServices] = useState([]);
   const [isLoading,setIsLoading]= useState(true);
+  const API = import.meta.env.URL;
   const storetokenInLS = (serverToken) => {
     setToken(serverToken); // Update state so you do not need to login to refresh the page
     localStorage.setItem("token", serverToken);
@@ -24,7 +25,7 @@ export const AuthProvider = ({ children }) => {
   const userAuthentication = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch("http://localhost:5000/api/auth/user", {
+      const response = await fetch(`${API}/api/auth/user`, {
         method: "GET",
         headers: {
           Authorization: authorizationToken,
@@ -47,7 +48,7 @@ export const AuthProvider = ({ children }) => {
   };
   const getServices = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/data/service", {
+      const response = await fetch(`${API}api/data/service`, {
         method: "GET",
       });
       if (response.ok) {
@@ -67,7 +68,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ isLoggedIn, storetokenInLS, LogoutUser, user, services,authorizationToken ,isLoading}}
+      value={{ isLoggedIn, storetokenInLS, LogoutUser, user, services,authorizationToken ,isLoading,API}}
     >
       {/* //any page can access storetokenInLS*/}
       {children}

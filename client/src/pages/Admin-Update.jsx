@@ -14,14 +14,14 @@ export const AdminUpdate = () => {
   const params = useParams();
   console.log("Captured params:", params);
 
-  const { authorizationToken } = useAuth();
+  const { authorizationToken,API } = useAuth();
 
   //get single user data
   const getSingleUserData = async () => {
     try {
 
       const response = await fetch(
-        `http://localhost:5000/api/admin/users/${params.id}`,
+        `${API}/api/admin/users/${params.id}`,
         {
           method: "GET",
           headers: {
@@ -57,7 +57,7 @@ export const AdminUpdate = () => {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/admin/users/update/${params.id}`,
+        `${API}/api/admin/users/update/${params.id}`,
         {
           method: "PATCH",
           headers: {
