@@ -10,7 +10,7 @@ const serviceRoute = require("./router/service-router");
 const adminRoute = require("./router/admin-router");
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://mern-app-store-frontend.onrender.com",
   methods: "GET, POST, PUT, DELETE, PATCH, HEAD",
   credentials: true,
 };

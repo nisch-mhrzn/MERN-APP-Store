@@ -7,7 +7,7 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [services, setServices] = useState([]);
   const [isLoading,setIsLoading]= useState(true);
-  const API = import.meta.env.URL;
+  const API = "https://mern-app-store-backend.onrender.com"
   const storetokenInLS = (serverToken) => {
     setToken(serverToken); // Update state so you do not need to login to refresh the page
     localStorage.setItem("token", serverToken);
